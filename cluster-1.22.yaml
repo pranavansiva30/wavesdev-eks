@@ -4,11 +4,3 @@ metadata:
   name: wavesdev-cluster
   region: ap-southeast-1
   version: "1.22"
-managedNodeGroups:
-- name: primary-1-22
-  instanceType: t2.small
-  minSize: 1
-  maxSize: 3
-  spot: true
-  ssh :
-    publicKeyName: pranavan-admin

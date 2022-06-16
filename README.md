@@ -11,3 +11,10 @@ eksctl create cluster --config-file cluster-1.22.yaml
 
 # delete cluster
 eksctl delete cluster --config-file cluster-1.22.yaml  --wait
+
+# create node
+eksctl create nodegroup --config-file eks-nodegroup.yaml
+
+
+# delete node
+eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
