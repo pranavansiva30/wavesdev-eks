@@ -18,3 +18,17 @@ eksctl create nodegroup --config-file eks-nodegroup.yaml
 
 # delete node
 eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
+
+#Apply the deployment manifest to your cluster.
+kubectl apply -f eks-sample-deployment.yaml
+
+# delete 
+
+kubectl delete -f eks-sample-deployment.yaml
+
+
+#Apply the service manifest to your cluster.
+kubectl apply -f eks-sample-service.yaml
+
+#View all resources
+kubectl get all
