@@ -19,6 +19,10 @@ eksctl create nodegroup --config-file eks-nodegroup.yaml
 # delete node
 eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
 
+# create namespace
+
+kubectl create namespace eks-sample-app
+
 #Apply the deployment manifest to your cluster.
 kubectl apply -f eks-sample-deployment.yaml
 
@@ -30,5 +34,13 @@ kubectl delete -f eks-sample-deployment.yaml
 #Apply the service manifest to your cluster.
 kubectl apply -f eks-sample-service.yaml
 
-#View all resources
-kubectl get all
+#View all resources that exist in the eks-sample-app namespace.
+kubectl get all -n eks-sample-app
+
+
+#View the details of the deployed service
+kubectl -n eks-sample-app describe service eks-sample-service
+
+
+#remove the sample namespace, service, and deployment with the following command.
+kubectl delete namespace eks-sample-app
