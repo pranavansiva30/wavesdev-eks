@@ -19,6 +19,8 @@ eksctl create nodegroup --config-file eks-nodegroup.yaml
 # delete node
 eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
 
+#before this you need push docker image to aws ecr
+
 # create namespace
 
 kubectl create namespace eks-sample-app
@@ -30,17 +32,31 @@ kubectl apply -f eks-sample-deployment.yaml
 
 kubectl delete -f eks-sample-deployment.yaml
 
-#before this you need push docker image to aws ecr
 
-#Apply the service manifest to your cluster.
-kubectl apply -f eks-sample-service.yaml
+#Create a ClusterIP service
+
+kubectl create -f clusterip.yaml
+#Delete a ClusterIP service
+kubectl delete -f clusterip.yaml
+
+#Create the NodePort 
+kubectl create -f nodeport.yaml
+
+#Delete the NodePort 
+kubectl delete -f nodeport.yaml
+
+#Create a LoadBalancer service
+kubectl create -f loadbalancer.yaml
+
+#Delete a LoadBalancer service
+kubectl create -f loadbalancer.yaml
 
 #View all resources that exist in the eks-sample-app namespace.
 kubectl get all -n eks-sample-app
 
 
 #View the details of the deployed service
-kubectl -n eks-sample-app describe service eks-sample-service
+kubectl -n eks-sample-app describe service sample-service-loadbalancer
 
 
 #remove the sample namespace, service, and deployment with the following command.

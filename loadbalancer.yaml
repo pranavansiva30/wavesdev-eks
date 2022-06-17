@@ -1,7 +1,9 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: eks-sample-service
+  annotations:
+    kubernetes.io/ingress.class: alb
+  name: sample-service-loadbalancer
   namespace: eks-sample-app
   labels:
     run: eks-sample-linux-app
