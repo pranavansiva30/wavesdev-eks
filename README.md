@@ -30,6 +30,7 @@ kubectl apply -f eks-sample-deployment.yaml
 
 kubectl delete -f eks-sample-deployment.yaml
 
+#before this you need push docker image to aws ecr
 
 #Apply the service manifest to your cluster.
 kubectl apply -f eks-sample-service.yaml
