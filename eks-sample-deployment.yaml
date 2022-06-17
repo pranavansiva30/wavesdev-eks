@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: eks-sample-linux-app
+  name: eks-sample-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: eks-sample-linux-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: eks-sample-linux-app
+    spec:
+      containers:
+        - image: 486306523629.dkr.ecr.ap-southeast-1.amazonaws.com/wavesdev-eureka:0.0.1-SNAPSHOT
+          name: wavesdev-eureka
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 8761
+status: {}
+
