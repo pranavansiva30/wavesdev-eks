@@ -19,11 +19,11 @@ spec:
         app: eks-sample-linux-app
     spec:
       containers:
-        - image: 486306523629.dkr.ecr.ap-southeast-1.amazonaws.com/wavesdev-eureka:0.0.1-SNAPSHOT
-          name: wavesdev-eureka
+        - image: 486306523629.dkr.ecr.ap-southeast-1.amazonaws.com/spring-boot-eks:1.0-SNAPSHOT
+          name: spring-boot-eks
           imagePullPolicy: Always
           resources: {}
           ports:
-            - containerPort: 8761
+            - containerPort: 8080
 status: {}
 

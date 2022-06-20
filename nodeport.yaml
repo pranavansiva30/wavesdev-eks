@@ -9,6 +9,6 @@ spec:
     app: eks-sample-linux-app
   ports:
     - protocol: TCP
-      port: 8761
-      targetPort: 8761
+      port: 8080
+      targetPort: 8080
       nodePort: 32055

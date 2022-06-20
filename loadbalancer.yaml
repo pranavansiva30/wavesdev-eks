@@ -9,8 +9,8 @@ metadata:
     run: eks-sample-linux-app
 spec:
   ports:
-    - port: 8761
-      targetPort: 8761
+    - port: 8080
+      targetPort: 8080
       protocol: TCP
   selector:
     app: eks-sample-linux-app
