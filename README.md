@@ -74,12 +74,7 @@ kubectl get ingress/eks-sample-ingress -n eks-sample-app
 #Delete a ingress
 kubectl create -f ingress.yaml
 ..................................................................
-#Create a LoadBalancer service(if you did not create ingress)
-kubectl create -f loadbalancer.yaml
 
-#Delete a LoadBalancer service
-kubectl delete -f loadbalancer.yaml
-.................................................................
 #View all resources that exist in the eks-sample-app namespace.
 kubectl get all -n eks-sample-app
 
