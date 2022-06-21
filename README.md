@@ -14,6 +14,8 @@ eksctl delete cluster --config-file cluster-1.22.yaml  --wait
 
 # create node
 eksctl create nodegroup --config-file eks-nodegroup.yaml
+# delete node
+eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
 
 #install Installing the AWS Load Balancer Controller
 
@@ -27,16 +29,14 @@ eksctl create iamserviceaccount   --cluster=wavesdev-cluster   --namespace=kube-
 #install target group binding CRDs
 kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/crds?ref=master"
 #Install the AWS Load Balancer Controller using Helm V3 
+
+#deploy helm chart
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update
+#configure AWS ALB to sit infront of ingress
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller   -n kube-system   --set clusterName=wavesdev-cluster   --set serviceAccount.create=false   --set serviceAccount.name=aws-load-balancer-controller
 #Verify that the controller is installed.
 kubectl get deployment -n kube-system aws-load-balancer-controller
-
-
-
-# delete node
-eksctl delete nodegroup --config-file eks-nodegroup.yaml --wait
 
 #before this you need push docker image to aws ecr
 
@@ -67,6 +67,9 @@ kubectl delete -f nodeport.yaml
 
 #Create a ingress
 kubectl create -f ingress.yaml
+
+#verify ingress
+kubectl get ingress/eks-sample-ingress -n eks-sample-app
 
 #Delete a ingress
 kubectl create -f ingress.yaml
