@@ -19,7 +19,7 @@ spec:
               service:
                 name: sample-service-nodeport
                 port:
-                  number: 80
+                  number: 8080
 
 
 
