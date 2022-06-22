@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: eks-front-linux-app
+  name: eks-front-deployment
+  namespace: eks-sample-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: eks-front-linux-app
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: eks-front-linux-app
+    spec:
+      containers:
+        - image: 486306523629.dkr.ecr.ap-southeast-1.amazonaws.com/spring-boot-front-eks:1.0-SNAPSHOT
+          name: spring-boot-eks
+          imagePullPolicy: Always
+          resources: {}
+          ports:
+            - containerPort: 8081
+          readinessProbe:
+            httpGet:
+              path: /front
+              port: 8081
+            periodSeconds: 3
+            timeoutSeconds: 1
+
+status: {}
+

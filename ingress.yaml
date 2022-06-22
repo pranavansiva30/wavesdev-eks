@@ -6,6 +6,8 @@ metadata:
   annotations:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/group.name: services
+    nginx.ingress.kubernetes.io/rewrite-target: /
   labels:
     app: eks-sample-ingress
 spec:
@@ -13,13 +15,21 @@ spec:
   rules:
     - http:
         paths:
-          - path: /
+          - path: /api
             pathType: Prefix
             backend:
               service:
                 name: sample-service-nodeport
                 port:
                   number: 8080
+
+          - path: /front
+            pathType: Prefix
+            backend:
+              service:
+                name: front-service-nodeport
+                port:
+                  number: 8081
 
 
 
