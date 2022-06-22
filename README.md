@@ -59,10 +59,10 @@ kubectl create -f clusterip.yaml
 kubectl delete -f clusterip.yaml
 
 #Create the NodePort 
-kubectl create -f nodeport.yaml
+kubectl create -f sample-service-nodeport.yaml
 
 #Delete the NodePort 
-kubectl delete -f nodeport.yaml
+kubectl delete -f sample-service-nodeport.yaml
 
 
 #Create a ingress
@@ -117,5 +117,5 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 ..............................................................................................................................
 kubectl create namespace eks-sample-app
 kubectl apply -f eks-sample-deployment.yaml
-kubectl create -f nodeport.yaml
+kubectl create -f sample-service-nodeport.yaml
 kubectl create -f ingress.yaml
